@@ -20,7 +20,6 @@ class ItensTableViewController: UITableViewController {
         self.itemPersistence = ItemPersistence()
         
         if(compra!.total == 0.0){
-            print("Entrou!")
             let rightButton = UIBarButtonItem(title: "Comprar", style: .plain, target: self, action: #selector(fazerCompra))
             navigationItem.rightBarButtonItem = rightButton
         }

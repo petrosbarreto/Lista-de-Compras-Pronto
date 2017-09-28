@@ -11,11 +11,14 @@ import UIKit
 class ItensTableViewController: UITableViewController {
     
     //MARK: propriedades
+    private var itemPersistence: ItemPersistence!
     var compra:Compra?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = compra!.nome
+        self.itemPersistence = ItemPersistence()
+        
         if(compra!.total == 0.0){
             print("Entrou!")
             let rightButton = UIBarButtonItem(title: "Comprar", style: .plain, target: self, action: #selector(fazerCompra))

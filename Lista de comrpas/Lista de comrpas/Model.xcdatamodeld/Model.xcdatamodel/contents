@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CompraEntity" representedClassName="CompraEntity" syncable="YES">
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="itens" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ItemEntity" syncable="YES"/>
+    </entity>
+    <entity name="ItemEntity" representedClassName="ItemEntity" syncable="YES">
+        <attribute name="precoUnitario" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="quantidade" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="produto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProdutoEntity" syncable="YES"/>
+    </entity>
     <entity name="ProdutoEntity" representedClassName="ProdutoEntity" syncable="YES">
         <attribute name="descricao" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="foto" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ProdutoEntity" positionX="-360" positionY="-9" width="128" height="90"/>
+        <element name="ProdutoEntity" positionX="-164" positionY="-126" width="128" height="90"/>
+        <element name="ItemEntity" positionX="-270" positionY="-277" width="128" height="88"/>
+        <element name="CompraEntity" positionX="-110" positionY="-417" width="128" height="73"/>
     </elements>
 </model>

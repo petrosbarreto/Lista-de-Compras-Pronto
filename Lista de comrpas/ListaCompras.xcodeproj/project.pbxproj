@@ -28,6 +28,12 @@
 		459FA0361F085EFE00CD05B0 /* NovoProdutoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459FA0351F085EFE00CD05B0 /* NovoProdutoViewController.swift */; };
 		459FA0381F085F1600CD05B0 /* ProdutosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459FA0371F085F1600CD05B0 /* ProdutosTableViewController.swift */; };
 		459FA03A1F085F3B00CD05B0 /* ProdutoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459FA0391F085F3B00CD05B0 /* ProdutoTableViewCell.swift */; };
+		45C6FF951F7D875000078CEB /* ItemEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6FF931F7D875000078CEB /* ItemEntity+CoreDataClass.swift */; };
+		45C6FF961F7D875000078CEB /* ItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6FF941F7D875000078CEB /* ItemEntity+CoreDataProperties.swift */; };
+		45C6FF981F7D87A500078CEB /* ItemPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6FF971F7D87A500078CEB /* ItemPersistence.swift */; };
+		45C6FF9B1F7D8B7400078CEB /* CompraEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6FF991F7D8B7400078CEB /* CompraEntity+CoreDataClass.swift */; };
+		45C6FF9C1F7D8B7400078CEB /* CompraEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6FF9A1F7D8B7400078CEB /* CompraEntity+CoreDataProperties.swift */; };
+		45C6FF9E1F7D8BB500078CEB /* CompraPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6FF9D1F7D8BB500078CEB /* CompraPersistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +60,12 @@
 		459FA0351F085EFE00CD05B0 /* NovoProdutoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovoProdutoViewController.swift; sourceTree = "<group>"; };
 		459FA0371F085F1600CD05B0 /* ProdutosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProdutosTableViewController.swift; sourceTree = "<group>"; };
 		459FA0391F085F3B00CD05B0 /* ProdutoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProdutoTableViewCell.swift; sourceTree = "<group>"; };
+		45C6FF931F7D875000078CEB /* ItemEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		45C6FF941F7D875000078CEB /* ItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		45C6FF971F7D87A500078CEB /* ItemPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPersistence.swift; sourceTree = "<group>"; };
+		45C6FF991F7D8B7400078CEB /* CompraEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompraEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		45C6FF9A1F7D8B7400078CEB /* CompraEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompraEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		45C6FF9D1F7D8BB500078CEB /* CompraPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompraPersistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +82,10 @@
 		45143A841F7C315D00554297 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				45C6FF991F7D8B7400078CEB /* CompraEntity+CoreDataClass.swift */,
+				45C6FF9A1F7D8B7400078CEB /* CompraEntity+CoreDataProperties.swift */,
+				45C6FF931F7D875000078CEB /* ItemEntity+CoreDataClass.swift */,
+				45C6FF941F7D875000078CEB /* ItemEntity+CoreDataProperties.swift */,
 				45143A901F7C33C400554297 /* ProdutoEntity+CoreDataClass.swift */,
 				45143A911F7C33C400554297 /* ProdutoEntity+CoreDataProperties.swift */,
 			);
@@ -80,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				45143A8E1F7C330100554297 /* ProdutoPersistence.swift */,
+				45C6FF971F7D87A500078CEB /* ItemPersistence.swift */,
+				45C6FF9D1F7D8BB500078CEB /* CompraPersistence.swift */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -254,18 +272,24 @@
 				45143A8F1F7C330100554297 /* ProdutoPersistence.swift in Sources */,
 				459FA0221F06DAC600CD05B0 /* Compra.swift in Sources */,
 				45143A831F7C30DA00554297 /* Model.xcdatamodeld in Sources */,
+				45C6FF961F7D875000078CEB /* ItemEntity+CoreDataProperties.swift in Sources */,
+				45C6FF951F7D875000078CEB /* ItemEntity+CoreDataClass.swift in Sources */,
 				459FA0201F06DA7500CD05B0 /* Item.swift in Sources */,
+				45C6FF981F7D87A500078CEB /* ItemPersistence.swift in Sources */,
 				459FA0321F0817D600CD05B0 /* ItemTableViewCell.swift in Sources */,
 				459FA0361F085EFE00CD05B0 /* NovoProdutoViewController.swift in Sources */,
 				451955F71F09E90000078018 /* ComprarViewController.swift in Sources */,
 				459FA0301F07FB8500CD05B0 /* CompraTableViewCell.swift in Sources */,
 				459FA00D1F06D9E300CD05B0 /* NovaCompraViewController.swift in Sources */,
+				45C6FF9C1F7D8B7400078CEB /* CompraEntity+CoreDataProperties.swift in Sources */,
 				459FA0381F085F1600CD05B0 /* ProdutosTableViewController.swift in Sources */,
 				459FA0281F06DDD200CD05B0 /* ItensTableViewController.swift in Sources */,
+				45C6FF9E1F7D8BB500078CEB /* CompraPersistence.swift in Sources */,
 				459FA00B1F06D9E300CD05B0 /* AppDelegate.swift in Sources */,
 				45143A931F7C33C400554297 /* ProdutoEntity+CoreDataProperties.swift in Sources */,
 				459FA0261F06DD4800CD05B0 /* ComprasFeitasTableViewController.swift in Sources */,
 				459FA02B1F07E9A700CD05B0 /* ComprasAFazerTableViewController.swift in Sources */,
+				45C6FF9B1F7D8B7400078CEB /* CompraEntity+CoreDataClass.swift in Sources */,
 				459FA01D1F06DA0900CD05B0 /* Produto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

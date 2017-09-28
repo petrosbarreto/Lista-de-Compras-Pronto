@@ -12,16 +12,19 @@ import os.log
 class ProdutosTableViewController: UITableViewController {
     
     //MARK: Propriedades
-    var produtos:[Produto] = [Produto]()
+    var produtosEntity: [ProdutoEntity]!
+    var produtoPersistece: ProdutoPersistence!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
-        if let produtos = carregarProdutos(){
-            self.produtos += produtos
-        }else{
-            carregarDadosSimples()
-        }
+        
+        self.produtoPersistece = ProdutoPersistence()
+//        self.produtoPersistece.create(nome: "Arroz", descricao: "Arroz branco", foto: "arroz")
+//        self.produtoPersistece.create(nome: "Feijão", descricao: "Feijão carioca", foto: "feijao")
+//        self.produtoPersistece.create(nome: "Frutas", descricao: "Frutas diversas", foto: "frutas")
+//        self.produtoPersistece.create(nome: "Default", descricao: "Default product", foto: "defaultPhoto")
+        self.produtosEntity = produtoPersistece.read()
         
         //Adding accessiblity
         addAccessiblityToNavigationItem()
@@ -33,16 +36,16 @@ class ProdutosTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return produtos.count
+        return produtosEntity.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Produto", for: indexPath) as? ProdutoTableViewCell else{
             fatalError("A célula selecionada não é uma instância de ProdutoTableViewCell")
         }
-        let produtoSelecionado = produtos[indexPath.row]
+        let produtoSelecionado = produtosEntity[indexPath.row]
         
-        cell.fotoProduto.image = produtoSelecionado.foto
+        cell.fotoProduto.image = UIImage(named: produtoSelecionado.foto ?? "defaultPhoto")
         cell.nomeProduto.text = produtoSelecionado.nome
         cell.descricaoProduto.text = produtoSelecionado.descricao
         
@@ -59,14 +62,9 @@ class ProdutosTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Produto", for: indexPath)
         if editingStyle == .delete {
-            let produtoSelecionado = produtos[indexPath.row]
-            if let produtosFromFile = carregarProdutos(){
-                self.produtos = produtosFromFile.filter{$0.nome.uppercased() != produtoSelecionado.nome.uppercased()}
-            }else{
-                let novosProdutos = self.produtos.filter{$0.nome.uppercased() != produtoSelecionado.nome.uppercased()}
-                self.produtos = novosProdutos
-            }
-            salvarProdutos()
+            let produtoSelecionado = produtosEntity[indexPath.row]
+            self.produtoPersistece.delete(produto: produtoSelecionado)
+            self.produtosEntity.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
         } else if editingStyle == .insert {
@@ -94,7 +92,7 @@ class ProdutosTableViewController: UITableViewController {
                     fatalError("A célula selecionada não está sendo exibida na TableView")
                 }
             
-                novoProdutoViewController.produto = produtos[indexPath.row]
+                novoProdutoViewController.produto = produtosEntity[indexPath.row]
             
             default:
                 fatalError("Identificar não esperado!")
@@ -105,54 +103,14 @@ class ProdutosTableViewController: UITableViewController {
         if let sourceViewController  = sender.source as? NovoProdutoViewController, let produto = sourceViewController.produto{
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow{
-                produtos[selectedIndexPath.row] = produto
+                produtosEntity[selectedIndexPath.row] = produto
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }else{
-                let novoIndexPath = IndexPath(row: produtos.count, section: 0)
-                produtos.append(produto)
+                let novoIndexPath = IndexPath(row: produtosEntity.count, section: 0)
+                produtosEntity.append(produto)
                 tableView.insertRows(at: [novoIndexPath], with: .automatic)
             }
-            salvarProdutos()
         }
-    }
-    
-    //MARK: Métodos privados
-    private func carregarDadosSimples(){
-        //Imagem dos produtos
-        let fotoArroz = #imageLiteral(resourceName: "arroz")
-        let fotoFeijao = #imageLiteral(resourceName: "feijao")
-        let fotoMacarrao = #imageLiteral(resourceName: "macarrao")
-        let fotoPaes = #imageLiteral(resourceName: "paes")
-        let fotoLeite = #imageLiteral(resourceName: "leite")
-        let fotoVerdurasLegumes = #imageLiteral(resourceName: "verduras_e_legumes")
-        let fotoFrutas = #imageLiteral(resourceName: "frutas")
-        
-        //Produtos
-        let arroz = Produto(nome: "Arroz", descricao: "Arroz branco", foto: fotoArroz)
-        let feijao = Produto(nome: "Feijão", descricao: "Feijão carioca", foto: fotoFeijao)
-        let macarrao = Produto(nome: "Macarrão", descricao: "Macarrão espaguete", foto: fotoMacarrao)
-        let paes = Produto(nome: "Pães", descricao: "Pães franceses", foto: fotoPaes)
-        let leite = Produto(nome: "Leite", descricao: "Leite integral", foto: fotoLeite)
-        let verdurasLegumes = Produto(nome: "Verduras e Legumes", descricao: "Verduras e Legumes diversos", foto: fotoVerdurasLegumes)
-        let frutas = Produto(nome: "Frutas", descricao: "Frutas diversas", foto: fotoFrutas)
-        
-        produtos += [arroz, feijao, macarrao, paes, leite, verdurasLegumes, frutas]
-    }
-    
-    private func salvarProdutos(){
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(produtos, toFile: Produto.ArchivingURL.path)
-        if isSuccessfulSave {
-            os_log("Produtos salvos com sucesso.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Falho ao tentar salvar produtos.", log: OSLog.default, type: .error)
-        }
-    }
-    
-    private func carregarProdutos() -> [Produto]?{
-        guard let produtos = NSKeyedUnarchiver.unarchiveObject(withFile: Produto.ArchivingURL.path) as? [Produto] else{
-            return nil
-        }
-        return produtos
     }
     
     //MARK: Accessibility

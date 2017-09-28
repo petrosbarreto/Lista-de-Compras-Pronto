@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45143A831F7C30DA00554297 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 45143A811F7C30DA00554297 /* Model.xcdatamodeld */; };
+		45143A8F1F7C330100554297 /* ProdutoPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45143A8E1F7C330100554297 /* ProdutoPersistence.swift */; };
+		45143A921F7C33C400554297 /* ProdutoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45143A901F7C33C400554297 /* ProdutoEntity+CoreDataClass.swift */; };
+		45143A931F7C33C400554297 /* ProdutoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45143A911F7C33C400554297 /* ProdutoEntity+CoreDataProperties.swift */; };
 		451955F71F09E90000078018 /* ComprarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451955F61F09E90000078018 /* ComprarViewController.swift */; };
 		459FA00B1F06D9E300CD05B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459FA00A1F06D9E300CD05B0 /* AppDelegate.swift */; };
 		459FA00D1F06D9E300CD05B0 /* NovaCompraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459FA00C1F06D9E300CD05B0 /* NovaCompraViewController.swift */; };
@@ -27,8 +31,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45143A821F7C30DA00554297 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		45143A8E1F7C330100554297 /* ProdutoPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdutoPersistence.swift; sourceTree = "<group>"; };
+		45143A901F7C33C400554297 /* ProdutoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProdutoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		45143A911F7C33C400554297 /* ProdutoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProdutoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		451955F61F09E90000078018 /* ComprarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComprarViewController.swift; sourceTree = "<group>"; };
-		459FA0071F06D9E300CD05B0 /* Lista de Compras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lista de Compras.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		459FA0071F06D9E300CD05B0 /* ListaCompras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListaCompras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		459FA00A1F06D9E300CD05B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		459FA00C1F06D9E300CD05B0 /* NovaCompraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaCompraViewController.swift; sourceTree = "<group>"; };
 		459FA00F1F06D9E300CD05B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,6 +67,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45143A841F7C315D00554297 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				45143A901F7C33C400554297 /* ProdutoEntity+CoreDataClass.swift */,
+				45143A911F7C33C400554297 /* ProdutoEntity+CoreDataProperties.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		45143A8D1F7C32E000554297 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				45143A8E1F7C330100554297 /* ProdutoPersistence.swift */,
+			);
+			name = Persistence;
+			sourceTree = "<group>";
+		};
 		459F9FFE1F06D9E300CD05B0 = {
 			isa = PBXGroup;
 			children = (
@@ -70,7 +95,7 @@
 		459FA0081F06D9E300CD05B0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				459FA0071F06D9E300CD05B0 /* Lista de Compras.app */,
+				459FA0071F06D9E300CD05B0 /* ListaCompras.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,6 +103,8 @@
 		459FA0091F06D9E300CD05B0 /* Lista de comrpas */ = {
 			isa = PBXGroup;
 			children = (
+				45143A8D1F7C32E000554297 /* Persistence */,
+				45143A841F7C315D00554297 /* Entities */,
 				459FA02C1F07FB5700CD05B0 /* View */,
 				459FA0291F06DDE900CD05B0 /* Controllers */,
 				459FA01E1F06DA5D00CD05B0 /* Models */,
@@ -86,6 +113,7 @@
 				459FA0111F06D9E300CD05B0 /* Assets.xcassets */,
 				459FA0131F06D9E300CD05B0 /* LaunchScreen.storyboard */,
 				459FA0161F06D9E300CD05B0 /* Info.plist */,
+				45143A811F7C30DA00554297 /* Model.xcdatamodeld */,
 			);
 			path = "Lista de comrpas";
 			sourceTree = "<group>";
@@ -151,9 +179,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		459FA0061F06D9E300CD05B0 /* Lista de Compras */ = {
+		459FA0061F06D9E300CD05B0 /* ListaCompras */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 459FA0191F06D9E300CD05B0 /* Build configuration list for PBXNativeTarget "Lista de Compras" */;
+			buildConfigurationList = 459FA0191F06D9E300CD05B0 /* Build configuration list for PBXNativeTarget "ListaCompras" */;
 			buildPhases = (
 				459FA0031F06D9E300CD05B0 /* Sources */,
 				459FA0041F06D9E300CD05B0 /* Frameworks */,
@@ -163,9 +191,9 @@
 			);
 			dependencies = (
 			);
-			name = "Lista de Compras";
+			name = ListaCompras;
 			productName = "Lista de comrpas";
-			productReference = 459FA0071F06D9E300CD05B0 /* Lista de Compras.app */;
+			productReference = 459FA0071F06D9E300CD05B0 /* ListaCompras.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -180,12 +208,12 @@
 				TargetAttributes = {
 					459FA0061F06D9E300CD05B0 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 2B6823827K;
+						DevelopmentTeam = C45KF93FKW;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 459FA0021F06D9E300CD05B0 /* Build configuration list for PBXProject "Lista de Compras" */;
+			buildConfigurationList = 459FA0021F06D9E300CD05B0 /* Build configuration list for PBXProject "ListaCompras" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -198,7 +226,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				459FA0061F06D9E300CD05B0 /* Lista de Compras */,
+				459FA0061F06D9E300CD05B0 /* ListaCompras */,
 			);
 		};
 /* End PBXProject section */
@@ -221,8 +249,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45143A921F7C33C400554297 /* ProdutoEntity+CoreDataClass.swift in Sources */,
 				459FA03A1F085F3B00CD05B0 /* ProdutoTableViewCell.swift in Sources */,
+				45143A8F1F7C330100554297 /* ProdutoPersistence.swift in Sources */,
 				459FA0221F06DAC600CD05B0 /* Compra.swift in Sources */,
+				45143A831F7C30DA00554297 /* Model.xcdatamodeld in Sources */,
 				459FA0201F06DA7500CD05B0 /* Item.swift in Sources */,
 				459FA0321F0817D600CD05B0 /* ItemTableViewCell.swift in Sources */,
 				459FA0361F085EFE00CD05B0 /* NovoProdutoViewController.swift in Sources */,
@@ -232,6 +263,7 @@
 				459FA0381F085F1600CD05B0 /* ProdutosTableViewController.swift in Sources */,
 				459FA0281F06DDD200CD05B0 /* ItensTableViewController.swift in Sources */,
 				459FA00B1F06D9E300CD05B0 /* AppDelegate.swift in Sources */,
+				45143A931F7C33C400554297 /* ProdutoEntity+CoreDataProperties.swift in Sources */,
 				459FA0261F06DD4800CD05B0 /* ComprasFeitasTableViewController.swift in Sources */,
 				459FA02B1F07E9A700CD05B0 /* ComprasAFazerTableViewController.swift in Sources */,
 				459FA01D1F06DA0900CD05B0 /* Produto.swift in Sources */,
@@ -359,7 +391,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2B6823827K;
+				DEVELOPMENT_TEAM = C45KF93FKW;
 				INFOPLIST_FILE = "Lista de comrpas/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mackmobile.Lista-de-comrpas";
@@ -372,7 +404,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2B6823827K;
+				DEVELOPMENT_TEAM = C45KF93FKW;
 				INFOPLIST_FILE = "Lista de comrpas/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mackmobile.Lista-de-comrpas";
@@ -384,7 +416,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		459FA0021F06D9E300CD05B0 /* Build configuration list for PBXProject "Lista de Compras" */ = {
+		459FA0021F06D9E300CD05B0 /* Build configuration list for PBXProject "ListaCompras" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				459FA0171F06D9E300CD05B0 /* Debug */,
@@ -393,7 +425,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		459FA0191F06D9E300CD05B0 /* Build configuration list for PBXNativeTarget "Lista de Compras" */ = {
+		459FA0191F06D9E300CD05B0 /* Build configuration list for PBXNativeTarget "ListaCompras" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				459FA01A1F06D9E300CD05B0 /* Debug */,
@@ -403,6 +435,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		45143A811F7C30DA00554297 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				45143A821F7C30DA00554297 /* Model.xcdatamodel */,
+			);
+			currentVersion = 45143A821F7C30DA00554297 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 459F9FFF1F06D9E300CD05B0 /* Project object */;
 }

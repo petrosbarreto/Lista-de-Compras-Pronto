@@ -15,13 +15,16 @@ class NovoProdutoViewController: UIViewController, UITextFieldDelegate, UIImageP
     @IBOutlet weak var descricaoProduto: UITextField!
     @IBOutlet weak var imagemProduto: UIImageView!
     @IBOutlet weak var botaoSalvar: UIBarButtonItem!
-    var produto:Produto?
+    
+    var produto:ProdutoEntity?
+    private var produtoPersistence: ProdutoPersistence!
     private var nomeOriginal:String?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.produtoPersistence = ProdutoPersistence()
         atualizarEstadoDoBotaoSalvar()
         imagemProduto.isUserInteractionEnabled = true
         
@@ -30,7 +33,7 @@ class NovoProdutoViewController: UIViewController, UITextFieldDelegate, UIImageP
             navigationItem.title = produto.nome
             nomeProduto.text = produto.nome
             descricaoProduto.text = produto.descricao
-            imagemProduto.image = produto.foto
+            imagemProduto.image = UIImage(named: produto.foto!)
         }
         
         atualizarEstadoDoBotaoSalvar()
@@ -84,28 +87,15 @@ class NovoProdutoViewController: UIViewController, UITextFieldDelegate, UIImageP
         
         if let produto = self.produto{
             //Editando
-            self.produto!.nome = nome
-            if nome != self.nomeOriginal && isNomeValido(){
-                self.produto!.nome = nome
-                self.produto!.descricao = descricao
-                self.produto!.foto = foto
-                performSegue(withIdentifier: "CriarProduto", sender: self)
-            }else{
-                self.produto!.descricao = descricao
-                self.produto!.foto = foto
-                performSegue(withIdentifier: "CriarProduto", sender: self)
-            }
+            produto.nome = nome
+            produto.descricao = descricao
+            //COLOCAR NOME DA NOVA IMAGEM
+            performSegue(withIdentifier: "CriarProduto", sender: self)
         }else{
             //Criando
-            self.produto = Produto(nome: nome, descricao: descricao, foto: foto)
-            if isNomeValido(){
-                self.produto!.nome = nome
-                self.produto!.descricao = descricao
-                self.produto!.foto = foto
-                performSegue(withIdentifier: "CriarProduto", sender: self)
-            }else{
-                self.produto = nil
-            }
+            //PEGAR NOME DA NOVA IMAGEM
+            self.produto = self.produtoPersistence.create(nome: nome, descricao: descricao, foto: "defaultPhoto")
+            performSegue(withIdentifier: "CriarProduto", sender: self)
         }
         
         
@@ -119,29 +109,6 @@ class NovoProdutoViewController: UIViewController, UITextFieldDelegate, UIImageP
         }
     }
     
-    //MARK: Métodos privados
-    private func carregarDadosSimples() -> [Produto]{
-        //Imagem dos produtos
-        let fotoArroz = #imageLiteral(resourceName: "arroz")
-        let fotoFeijao = #imageLiteral(resourceName: "feijao")
-        let fotoMacarrao = #imageLiteral(resourceName: "macarrao")
-        let fotoPaes = #imageLiteral(resourceName: "paes")
-        let fotoLeite = #imageLiteral(resourceName: "leite")
-        let fotoVerdurasLegumes = #imageLiteral(resourceName: "verduras_e_legumes")
-        let fotoFrutas = #imageLiteral(resourceName: "frutas")
-        
-        //Produtos
-        let arroz = Produto(nome: "Arroz", descricao: "Arroz branco", foto: fotoArroz)
-        let feijao = Produto(nome: "Feijão", descricao: "Feijão carioca", foto: fotoFeijao)
-        let macarrao = Produto(nome: "Macarrão", descricao: "Macarrão espaguete", foto: fotoMacarrao)
-        let paes = Produto(nome: "Pães", descricao: "Pães franceses", foto: fotoPaes)
-        let leite = Produto(nome: "Leite", descricao: "Leite integral", foto: fotoLeite)
-        let verdurasLegumes = Produto(nome: "Verduras e Legumes", descricao: "Verduras e Legumes diversos", foto: fotoVerdurasLegumes)
-        let frutas = Produto(nome: "Frutas", descricao: "Frutas diversas", foto: fotoFrutas)
-        
-        return [arroz, feijao, macarrao, paes, leite, verdurasLegumes, frutas]
-    }
-    
     private func atualizarEstadoDoBotaoSalvar(){
         botaoSalvar.isEnabled =
             !((nomeProduto.text ?? "").isEmpty) &&
@@ -149,14 +116,9 @@ class NovoProdutoViewController: UIViewController, UITextFieldDelegate, UIImageP
     }
     
     private func isNomeValido() -> Bool{
-        var produtos = [Produto]()
-        if let produtosFromFile = NSKeyedUnarchiver.unarchiveObject(withFile: Produto.ArchivingURL.path) as? [Produto]{
-            produtos = produtosFromFile
-        }else{
-            produtos = carregarDadosSimples()
-        }
+        var produtos = self.produtoPersistence.read()
         for p in produtos{
-            if p.nome.uppercased() == self.produto!.nome.uppercased(){
+            if p.nome?.uppercased() == self.produto!.nome?.uppercased(){
                 let alerta = UIAlertController(title: "Nome inválido", message: "Já existe um produto com este nome.", preferredStyle: .alert)
                 let okAcao = UIAlertAction(title: "OK", style: .default)
                 alerta.addAction(okAcao)

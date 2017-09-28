@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "459FA0061F06D9E300CD05B0"
-               BuildableName = "Lista de Compras.app"
-               BlueprintName = "Lista de Compras"
-               ReferencedContainer = "container:Lista de Compras.xcodeproj">
+               BuildableName = "ListaCompras.app"
+               BlueprintName = "ListaCompras"
+               ReferencedContainer = "container:ListaCompras.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -33,9 +34,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "459FA0061F06D9E300CD05B0"
-            BuildableName = "Lista de Compras.app"
-            BlueprintName = "Lista de Compras"
-            ReferencedContainer = "container:Lista de Compras.xcodeproj">
+            BuildableName = "ListaCompras.app"
+            BlueprintName = "ListaCompras"
+            ReferencedContainer = "container:ListaCompras.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -45,6 +46,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -56,9 +58,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "459FA0061F06D9E300CD05B0"
-            BuildableName = "Lista de Compras.app"
-            BlueprintName = "Lista de Compras"
-            ReferencedContainer = "container:Lista de Compras.xcodeproj">
+            BuildableName = "ListaCompras.app"
+            BlueprintName = "ListaCompras"
+            ReferencedContainer = "container:ListaCompras.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "459FA0061F06D9E300CD05B0"
-            BuildableName = "Lista de Compras.app"
-            BlueprintName = "Lista de Compras"
-            ReferencedContainer = "container:Lista de Compras.xcodeproj">
+            BuildableName = "ListaCompras.app"
+            BlueprintName = "ListaCompras"
+            ReferencedContainer = "container:ListaCompras.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
